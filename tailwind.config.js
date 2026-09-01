@@ -1,4 +1,5 @@
 export default {
+  darkMode: 'class',
   content: [
     "./index.html",
     "./src/**/*.{js,jsx}"
@@ -6,6 +7,14 @@ export default {
   theme: {
     extend: {
       colors: {
+        canvas:    'rgb(var(--color-canvas) / <alpha-value>)',
+surface:    'rgb(var(--color-surface) / <alpha-value>)',
+foreground: 'rgb(var(--color-foreground) / <alpha-value>)',
+muted:      'rgb(var(--color-muted) / <alpha-value>)',
+subtle:     'rgb(var(--color-subtle) / <alpha-value>)',
+line:       'rgb(var(--color-line) / <alpha-value>)',
+inverse:    'rgb(var(--color-inverse) / <alpha-value>)',
+
         "primary": {
           '50': '#edf9ff',
           '100': '#d6f0ff',

@@ -1,8 +1,12 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FiMenu, FiX } from 'react-icons/fi';
+import { FiMenu, FiX, FiSun, FiMoon } from 'react-icons/fi';
+import { useTheme } from '../../context/ThemeContext';
+
 
 function Navbar() {
+
+  const { theme, toggleTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
 
   const navigation = [
@@ -14,7 +18,7 @@ function Navbar() {
   ];
 
   return (
-    <nav className="bg-white shadow-sm">
+    <nav className="bg-white shadow-sm dark:bg-secondary-800 dark:shadow-none dark:border-b dark:border-secondary-700">
       <div className="container">
         <div className="flex justify-between h-16">
           <div className="flex">
@@ -33,7 +37,7 @@ function Navbar() {
               <Link
                 key={item.name}
                 to={item.href}
-                className="text-secondary-600 hover:text-primary-600 px-3 py-2 text-sm font-medium"
+                className="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400 px-3 py-2 text-sm font-medium"
               >
                 {item.name}
               </Link>
@@ -43,13 +47,24 @@ function Navbar() {
             >
               Connect
             </button>
+
+
+            <button
+  type="button"
+  onClick={toggleTheme}
+  aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+  className="p-2 rounded-md text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400"
+>
+  {theme === 'dark' ? <FiSun size={20} /> : <FiMoon size={20} />}
+</button>
+
           </div>
 
           {/* Mobile menu button */}
           <div className="flex items-center md:hidden">
             <button
               type="button"
-              className="text-secondary-600 hover:text-primary-600"
+              className="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400"
               onClick={() => setIsOpen(!isOpen)}
             >
               {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
@@ -65,7 +80,7 @@ function Navbar() {
                 <Link
                   key={item.name}
                   to={item.href}
-                  className="block px-3 py-2 text-base font-medium text-secondary-600 hover:text-primary-600 hover:bg-primary-50"
+                  className="block px-3 py-2 text-base font-medium text-secondary-600 hover:text-primary-600 hover:bg-primary-50 dark:text-secondary-300 dark:hover:text-primary-400 dark:hover:bg-secondary-700"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}
