@@ -4,6 +4,7 @@ import { FiHome, FiMaximize2, FiCalendar, FiTrendingUp, FiUsers, FiDollarSign, F
 import { FacebookShareButton, TwitterShareButton, LinkedinShareButton } from 'react-share';
 import { FaFacebook, FaTwitter, FaLinkedin, FaEthereum } from 'react-icons/fa';
 import WalletButton from '../components/wallet/WalletButton';
+import EscrowPanel from '../components/contracts/EscrowPanel';
 
 function PropertyDetail() {
   const { id } = useParams();
@@ -306,6 +307,8 @@ function PropertyDetail() {
                 </LinkedinShareButton>
               </div>
             </div>
+
+            <EscrowPanel tokenId={1} />
 
             {/* Agent Card */}
             <div className="bg-white rounded-lg shadow-md p-6">

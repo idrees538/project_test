@@ -50,7 +50,12 @@
     "start": "concurrently \"node server/server.js\" \"react-app-rewired start\"",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-app-rewired eject"
+    "eject": "react-app-rewired eject",
+    "chain": "hardhat node",
+    "chain:compile": "hardhat compile",
+    "chain:deploy": "hardhat compile && node scripts/deploy.js",
+    "server": "node server/server.js",
+    "api:smoke": "node scripts/api-smoke.js"
   },
   "eslintConfig": {
     "extends": [
@@ -71,10 +76,12 @@
     ]
   },
   "devDependencies": {
+    "@openzeppelin/contracts": "^4.9.6",
     "assert": "^2.0.0",
     "buffer": "^6.0.3",
     "crypto-browserify": "^3.12.0",
     "eslint": "^8.57.1",
+    "hardhat": "^2.29.1",
     "https-browserify": "^1.0.0",
     "os-browserify": "^0.3.0",
     "process": "^0.11.10",
