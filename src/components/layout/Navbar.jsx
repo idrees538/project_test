@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiMenu, FiX, FiSun, FiMoon } from 'react-icons/fi';
 import { useTheme } from '../../context/ThemeContext';
+import WalletButton from '../wallet/WalletButton';
 
 
 function Navbar() {
@@ -42,26 +43,28 @@ function Navbar() {
                 {item.name}
               </Link>
             ))}
+            <WalletButton />
             <button
-              className="btn"
+              type="button"
+              onClick={toggleTheme}
+              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+              className="p-2 rounded-md text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400"
             >
-              Connect
+              {theme === 'dark' ? <FiSun size={20} /> : <FiMoon size={20} />}
             </button>
-
-
-            <button
-  type="button"
-  onClick={toggleTheme}
-  aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-  className="p-2 rounded-md text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400"
->
-  {theme === 'dark' ? <FiSun size={20} /> : <FiMoon size={20} />}
-</button>
 
           </div>
 
           {/* Mobile menu button */}
-          <div className="flex items-center md:hidden">
+          <div className="flex items-center space-x-2 md:hidden">
+            <button
+              type="button"
+              onClick={toggleTheme}
+              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+              className="p-2 rounded-md text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400"
+            >
+              {theme === 'dark' ? <FiSun size={20} /> : <FiMoon size={20} />}
+            </button>
             <button
               type="button"
               className="text-secondary-600 hover:text-primary-600 dark:text-secondary-300 dark:hover:text-primary-400"
@@ -86,12 +89,9 @@ function Navbar() {
                   {item.name}
                 </Link>
               ))}
-              <button
-                className="block px-3 py-2 text-base font-medium text-white bg-primary-600 hover:bg-primary-700"
-                onClick={() => setIsOpen(false)}
-              >
-                Connect
-              </button>
+              <div className="px-3 py-2">
+                <WalletButton />
+              </div>
             </div>
           </div>
         )}

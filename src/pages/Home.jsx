@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FiArrowRight, FiUser, FiClock } from 'react-icons/fi';
 import { FaWallet, FaStore, FaMoneyBillWave, FaExchangeAlt, FaChartLine, FaLock, FaUserCog, FaCoins } from 'react-icons/fa';
 import { SiEthereum } from 'react-icons/si';
+import WalletButton from '../components/wallet/WalletButton';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 
 function Home() {
@@ -242,6 +243,20 @@ function Home() {
           >
             Own fractional shares of premium properties through NFTs. Start investing with as little as $10.
           </motion.p>
+          <motion.div
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <WalletButton />
+            <Link
+              to="/properties"
+              className="btn bg-white text-primary-600 hover:bg-primary-50"
+            >
+              Browse Properties
+            </Link>
+          </motion.div>
         </div>
       </section>
       {/* Investment Steps */}
@@ -415,12 +430,7 @@ function Home() {
             >
               Browse Properties
             </Link>
-            <button
-              className="btn bg-primary-700 hover:bg-primary-800"
-            >
-              <FaWallet className="mr-2" />
-              Connect Wallet
-            </button>
+            <WalletButton className="bg-primary-700 hover:bg-primary-800" />
           </div>
         </div>
       </section>
